@@ -1,0 +1,17 @@
+<% layout("/layouts/admin_boilerplate") %>
+
+<h1>Your Liked Listings</h1>
+<% if (listings.length === 0) { %>
+    <p>You haven't liked any listings yet.</p>
+<% } else { %>
+    <ul>
+        <% listings.forEach(listing => { %>
+            <li>
+                <h2><a href="/listing/<%= listing._id %>"><%= listing.title %></a></h2>
+                <p><%= listing.description %></p>
+                <p>Price: $<%= listing.price %></p>
+                <img src="<%= listing.image[0]?.url %>" alt="<%= listing.title %> image">
+            </li>
+        <% }) %>
+    </ul>
+<% } %>
